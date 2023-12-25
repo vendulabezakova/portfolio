@@ -1,17 +1,33 @@
-const submitForm = () => {
-    // Získání hodnot z formuláře
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+// script.js
+document.getElementById("contactForm").onsubmit = function (event) {
+    event.preventDefault(); // Zabraňuje přirozenému odeslání formuláře
 
-    // Validace nebo další manipulace s daty může být provedena zde
+    const form = event.target;
+    const formData = new FormData(form);
 
-    // Odeslání e-mailu
-    const mailtoLink =
-        "mailto:vendula.bezakova@gmail.com" +
-        "?subject=" + encodeURIComponent("Nová zpráva od " + name) +
-        "&body=" + encodeURIComponent("Jméno: " + name + "\nE-mail: " + email + "\n\n" + message);
+    // AJAX požadavek na Formspree
+    const xhr = new XMLHttpRequest();
+    const url = form.action;
 
-    // Otevření e-mailového klienta
-    window.location.href = mailtoLink;
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Accept", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            const response = JSON.parse(xhr.responseText);
+
+            // Zde můžete zpracovat odpověď od Formspree
+            console.log(response);
+
+            // Případně můžete přesměrovat uživatele na jinou stránku nebo zobrazit potvrzení
+            if (response.success) {
+                alert("Zpráva byla odeslána. Děkujeme!");
+                form.reset(); // Vymazání formuláře
+            } else {
+                alert("Odeslání zprávy selhalo. Zkuste to znovu.");
+            }
+        }
+    };
+
+    xhr.send(formData);
 };
