@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Vendula Bezáková</h1>
+        <p>HTML/CSS coder</p>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">O mně</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sekce "O mně" -->
+    <section id="about">
+        <h2>O mně</h2>
+        <p>Vítejte na mé stránce! Jsem web developer s vášní pro kódování a tvorbu moderních webových stránek.</p>
+    </section>
+
+    <!-- Sekce "Portfolio" -->
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <!-- Galerie projektů -->
+        <div class="project">
+            <img src="project1.jpg" alt="Projekt 1">
+            <h3>Název Projektu 1</h3>
+            <p>Krátký popis projektu. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="project1.html">Zobrazit více</a>
+        </div>
+    </section>
+
+    <!-- Sekce "Kontakt" -->
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <!-- Formulář -->
+        <form action="process-form.php" method="post">
+            <label for="name">Jméno:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Zpráva:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Odeslat</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Vendula Bezáková. Všechna práva vyhrazena.</p>
+    </footer>
+
+   <!-- Script -->
+   <script src="form.js"></script>
+</body>
+</html>
